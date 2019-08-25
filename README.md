@@ -4,9 +4,10 @@ This app lets you start a phone call by sending an SMS with the number you want 
 
 ## Prerequisites
 
-* Sign up for a Twilio account
-* Install Node.js and Twilio CLI and log into your Twilio account
-* Install the Twilio CLI serverless plugin
+* Sign up for a [Twilio account](https://twilio.com/)
+* Install [Twilio CLI](https://www.twilio.com/docs/twilio-cli/quickstart)
+* Install Twilio Serverless CLI plugin: `twilio plugins:install @twilio-labs/plugin-serverless`
+* Log in with `twilio profiles:add` and follow instructions
 
 ## Setup
 
