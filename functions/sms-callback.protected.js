@@ -24,7 +24,7 @@ exports.handler = function(context, event, callback) {
 
     if(number) {
         client.calls.create({
-            url: 'https://' + context.DOMAIN_NAME + '/voice-callback?to='+number,
+            url: 'https://' + context.DOMAIN_NAME + '/voice-callback?to='+encodeURIComponent(number),
             to: event.From,
             from: context.CALLER_ID
           }, (err, result) => {
