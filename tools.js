@@ -5,8 +5,27 @@
         destroy(false)
     } else if(process.argv[2] == "destroy-really") {
         destroy(true)
+    } else if(process.argv[2] == "info") {
+        info()
     }
 })()
+
+async function info() {
+    // Grab the service SID
+    const fs = require('fs');
+    const config = JSON.parse(fs.readFileSync('.twilio-functions'));
+
+    // Grab the domain name
+    let r = await execCmd("twilio api:serverless:v1:services:environments:list --service-sid "+
+                        config.serviceSid+" -o json")
+    const envInfo = JSON.parse(r.stdout)
+
+    console.log("URL: https://"+envInfo[0].domainName+"/index.html")
+
+    r = await execCmd("twilio api:core:incoming-phone-numbers:list --friendly-name number-"+config.serviceSid+" -o json")
+    const numbers = JSON.parse(r.stdout)
+    console.log("Phone number: "+numbers[0].phoneNumber)
+}
 
 async function destroy(really) {
     // Grab the service SID

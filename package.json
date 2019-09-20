@@ -8,7 +8,8 @@
     "start": "twilio-run --env",
     "setup": "node tools.js setup",
     "destroy": "node tools.js destroy",
-    "destroy-really": "node tools.js destroy-really"
+    "destroy-really": "node tools.js destroy-really",
+    "info": "node tools.js info"
   },
   "devDependencies": {
     "twilio-run": "^2.0.0"
